@@ -1,0 +1,59 @@
+<script type="text/javascript" src="js/lib/underscore.js"></script>
+<script type="text/javascript">
+// var obj = {a:1 ,b:2 ,c:3};
+// //_.each(list, iteratee, [context])
+// //遍历list中的所有元素，按顺序用遍历输出每个元素。
+// //如果传递了context参数，则把iteratee绑定到context对象上。
+// _.each([1,2,34], function(value, key, list){
+// 	console.log(value, key, list);
+// });
+// _.each({a:1, b:2, c: 3}, function(value, key, list){
+// 	console.log(value, key, list);
+// });
+// var obj2 = {
+// 	arr: [],
+// 	foo: function(item){
+// 		console.log(this);
+// 	}
+// };
+// //log: Window;
+// _.each(obj, obj2.foo);
+// //log: [];
+// console.log(obj2.arr);
+
+// var obj3 = {
+// 	arr: [],
+// 	foo: function(item){
+// 		console.log(this);
+// 		this.arr.push(item);
+// 	}
+// }
+// //log: Object obj3;
+// _.each(obj, obj3.foo, obj3);
+// //log: [1, 2, 3];
+// console.log(obj3.arr);
+
+// ************************************
+// var evens = _.filter([1, 2, 3, 4, 5], function(num){
+// 	return num %2 == 0;
+// });
+// // log: [2, 4]
+// console.log(evens);
+
+// ************************************
+var arr0 = [[321,12,21,43,234], [432,12312,421, 42,79]];
+var arr1 = _.invoke(arr0, 'sort', function(a, b){
+	return a - b;
+});
+console.dir(arr1);
+
+// ************************************	
+// ************************************	
+// ************************************	
+// ************************************	
+
+
+
+
+
+</script>
