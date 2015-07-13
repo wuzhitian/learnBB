@@ -11,8 +11,13 @@ var TodoList = Backbone.Collection.extend({
 	},
 
 	remaining: function(){
-		// return this.without.apply(this, this.completed());
-		return _.without(this, this.completed());
+		//this.without.apply(this, this.completed); 为了将需要过滤的参数,数组化传进without();
+		//借助apply([thisObj[,argArray]])
+		//this.without(1, 2, 3);
+		//this.without.apply(this, [1, 2, 3]);
+
+		return this.without.apply(this, this.completed());
+		//return _.without(this, this.completed());
 	},
 
 	nextOrder: function(){

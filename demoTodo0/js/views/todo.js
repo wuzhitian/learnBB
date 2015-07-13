@@ -8,7 +8,7 @@ app.TodoView = Backbone.View.extend({
 
 	events: {
 		'dblclick .edit': 'edit',
-		'keydown .edit': 'updateOnEnter',
+		'keypress .edit': 'updateOnEnter',
 		'blur .edit': 'close',
 
 		'click .toggle': 'toggleCompleted',
@@ -33,7 +33,7 @@ app.TodoView = Backbone.View.extend({
 		this.$el.toggleClass('hidden', this.isHidden());
 	},
 	/**
-	 * 通过判断this.model.get('completed'),决定该条目是否需要隐藏;
+	 * 通过判断this.model.get('completed')以及路由参数,决定该条目是否需要隐藏;
 	 * @return {Boolean} true:隐藏; false: 不隐藏;
 	 */
 	isHidden: function(){
@@ -42,11 +42,11 @@ app.TodoView = Backbone.View.extend({
 		//var a = (!isCompleted && app.TodoFilter === 'completed');
 		//如果是未完成的条目，则!isCompleted为true, 当路由参数为'completed'时, a = true, 隐藏该条目;
 		//如果是已完成的条目，则!isCompleted为false, 当路由参数为'completed'时, a = false, 不隐藏该条目
-		
+
 		//var b = (isCompleted && app.TodoFilter === 'active');
 		//如果是未完成的条目，则isCompleted为false, 当路由参数为'active'时, b = false, 不隐藏该条目;
 		//如果是已完成的条目，则isCompleted为true, 当路由参数为'active'时, b = true, 隐藏该条目;
-		
+
 		//功能总结:
 		//当路由参数为'completed'时,isCompleted为true的条目,返回false(--> 不隐藏); isCompleted为false的条目,返回true(--> 隐藏);
 		//当路由参数为'active'时, isCompleted为true的条目, 返回true(--> 隐藏); isCompleted为false的条目, 返回false(--> 不隐藏);
@@ -75,6 +75,7 @@ app.TodoView = Backbone.View.extend({
 	},
 
 	updateOnEnter: function(event){
+		alert(1);
 		if(event.which === ENTER_KEY){
 			this.close();
 		}

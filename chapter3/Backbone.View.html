@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Backbone.View</title>
+</head>
+<body>
+	<script type="text/javascript" src="js/lib/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="js/lib/underscore.js"></script>
+	<script type="text/javascript" src="js/lib/backbone.js"></script>
+	<script type="text/javascript">
+	//*************************************************
+	// $el等价于$(view.el);	
+	// .$(selector)等价于$(view.el).find(selector); this.$(".edit")用于查找class为edit的元素;
+	//*************************************************
+	//setElement
+	var button1 = $('<button class="button1"></button>');
+	var button2 = $('<button class="button2"></button>');
+
+	var View = Backbone.View.extend({
+		events: {
+			click: function(event){
+				console.log(view.el , event.target);
+				// console.log(view.el === event.target);
+				console.log(this.el , event.target);
+				console.log(this.el === event.target);
+			}
+		}
+	});
+
+	var view = new View({el: button1});
+	button1.trigger('click');	
+	// log: <button class="button1"></button> <button class="button1"></button>
+	// log: true
+
+	view.setElement(button2);
+	button1.trigger('click');	//旧元素上已经解绑事件；所以没有log;
+	button2.trigger('click');	
+	// log: <button class="button1"></button> <button class="button1"></button>
+	// log: true
+
+	//注意trigger的用法，第四章的例子，trigger用得很灵活
+	//*************************************************
+	//*************************************************
+	//*************************************************
+	//*************************************************
+
+	</script>
+</body>
+</html>
