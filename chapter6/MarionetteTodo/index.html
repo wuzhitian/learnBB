@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Marionette Todo</title>
+    <link rel="stylesheet" href="./node_modules/todomvc-common/base.css"/>
+    <link rel="stylesheet" href="./node_modules/todomvc-app-css/index.css"/>
+</head>
+<body>
+<section id="todoapp">
+    <header id="header">
+        <h1>todos</h1>
+        <input type="text" id="new-todo" placeholder="What needs to be done?" autofocus>
+    </header>
+    <section id="main">
+        <input type="checkbox" id="toggle-all">
+        <label for="toggle-all">Marks all as complete</label>
+        <ul id="todo-list"></ul>
+    </section>
+    <footer id="footer"></footer>
+</section>
+<div id="info">
+    <p>Doubel-click to edit a todo</p>
+    <p>Written by <a href="#">Wu</a></p>
+    <p>Part of <a href="#">TodoMVC</a></p>
+</div>
+
+<script type="text/html" id="template-header">
+	<h1>todos</h1>
+	<input id="new-todo" placeholder="What needs to be done?" autofocus>
+</script>
+
+<script type="text/html" id="template-todoItemView">
+	<div class="view">
+		<input class="toggle" type="checkbox" <% if (completed) { %>checked<% } %>>
+		<label><%- title %></label>
+		<button class="destroy"></button>
+	</div>
+	<input class="edit" value="<%- title %>">
+</script>
+
+<script type="text/html" id="template-footer">
+	<span id="todo-count">
+		<strong><%= activeCount %></strong> <%= activeCountLabel() %>
+	</span>
+	<ul id="filters">
+		<li class="all">
+			<a href="#/">All</a>
+		</li>
+		<li class="active">
+			<a href="#/active">Active</a>
+		</li>
+		<li class="completed">
+			<a href="#/completed">Completed</a>
+		</li>
+	</ul>
+	<button id="clear-completed" <% if (!completedCount) { %>class="hidden"<% } %>>Clear completed</button>
+</script>
+<script type="text/javascript" src="./js/lib/jquery-1.11.3.js"></script>
+<script src="./js/lib/underscore.js"></script>
+<script src="./js/lib/backbone.js"></script>
+<script src="./js/lib/backbone.localStorage.js"></script>
+<script type="text/javascript" src="./js/lib/marionette/backbone.marionette.js"></script>
+
+<script type="text/javascript" src="./js/Todo/TodoMVC.js"></script>
+<script type="text/javascript" src="./js/Todo/TodoMVC.Layout.js"></script>
+<script type="text/javascript" src="./js/Todo/TodoMVC.TodoList.js"></script>
+<script type="text/javascript" src="./js/Todo/TodoMVC.TodoList.View.js"></script>
+<script type="text/javascript" src="./js/Todo/Todos.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        TodoMVC.start();
+    })
+</script>
+</body>
+</html>
